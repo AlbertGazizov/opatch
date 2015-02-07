@@ -56,7 +56,7 @@ class OPatch::Patcher
       attributes[collection_name].each do |child_attributes|
         key_value = attributes_key_value(child_attributes, key)
         if key_value
-          child_object = collection_hash[key_value].first
+          child_object = (collection_hash[key_value] || []).first
           raise "#{collection_name} don't have an object with key: #{key_value}" unless child_object
           if child_attributes[:_destroy]
             collection.delete(child_object)
