@@ -1,11 +1,11 @@
-# HCast [![Build Status](https://travis-ci.org/AlbertGazizov/opatch.png)](https://travis-ci.org/AlbertGazizov/opatch) [![Code Climate](https://codeclimate.com/github/AlbertGazizov/opatch.png)](https://codeclimate.com/github/AlbertGazizov/opatch)
+# OPatch [![Build Status](https://travis-ci.org/AlbertGazizov/opatch.png)](https://travis-ci.org/AlbertGazizov/opatch) [![Code Climate](https://codeclimate.com/github/AlbertGazizov/opatch.png)](https://codeclimate.com/github/AlbertGazizov/opatch)
 
 
 
 OPatch is ruby objects patcher in declarative way. By providing simple DSL it allows you write complex patch logic with ease
 
 ## Usage
-Lets say you have the folowing plain ruby classes:
+Let's say you have the folowing plain ruby classes:
 ```ruby
   class Person
     attr_accessor :name, :address
@@ -41,14 +41,14 @@ You need to call OPatch with attributes you want to update:
     end
   end
 ```
-That's all! Now you have updated person:
+That's all! Now you have the person updated:
 ```ruby
   => #<Person:0x007f8bc42487c0 @name="Jim White", @address=#<Address:0x007f8bc4248838 @city="New York", @country="USA">>
 ```
 
 ### Creating nested objects
-Opatch allows you build nested objects if you specify build block.
-Lets see how it work if we want to build address when it wasn't created initialilly:
+Opatch allows you to build nested objects if you specify build block.
+Lets see how it works if we want to build address when it wasn't created initialilly:
 ```ruby
   person = Person.new(name: "John Smith")
   => #<Person:0x007f8bc40239e0 @name="John Smith", @address=nil>
@@ -70,6 +70,7 @@ Lets see how it work if we want to build address when it wasn't created initiali
 
 ### Deleting nested objects
 If you provide nil for the nested object the object will be removed:
+```ruby
   person = Person.new(name: "John Smith", address: Address.new(city: "Kazan", country: "Russia"))
 
   OPatch.patch(person, name: 'Vasya', address: nil) do
