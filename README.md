@@ -83,3 +83,7 @@ If you provide nil for the nested object the object will be removed:
 
   => #<Person:0x007f8bc400a850 @name="Vasya", @address=nil>
 ```
+
+### Author
+Albert Gazizov, [@deeper4k](https://twitter.com/deeper4k)
+
