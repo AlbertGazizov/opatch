@@ -61,7 +61,7 @@ class OPatch::Patcher
           if child_attributes[:_destroy]
             collection.delete(child_object)
           else
-            self.class.patch(child_object, child_attributes, &block)
+            self.class.patch(child_object, child_attributes, &block) if block_given?
           end
         else
           build_block.call(entity, child_attributes)
