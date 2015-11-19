@@ -29,7 +29,12 @@ class OPatch::Patcher
   def object(field_name, options = {}, &block)
     if attributes.has_key?(field_name)
       if attributes[field_name].nil?
-        entity.send("#{field_name}=", nil)
+        remove_block = options[:remove]
+        if remove_block
+          remove_block.call(entity)
+        else
+          entity.send("#{field_name}=", nil)
+        end
       else
         child_entity = entity.send(field_name)
         if child_entity

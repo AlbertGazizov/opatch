@@ -97,6 +97,18 @@ describe OPatch do
         end
       end.to raise_error(ArgumentError, "address build block should be specified")
     end
+
+    it "should remove nested object if nil was given" do
+      person = Person.new('Ivan')
+      person.build_address(counry: 'Russia', city: 'Kazan')
+
+      OPatch.patch(person, name: 'Vasya', address: nil) do
+        field  :name
+        object :address, remove: proc { |person, attributes| person.address = :removed }
+      end
+
+      person.address.should == :removed
+    end
   end
 
   context "nested collection" do
