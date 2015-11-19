@@ -3,7 +3,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |spec|
   spec.name          = "o_patch"
-  spec.version       = "0.0.2"
+  spec.version       = "0.1.0"
   spec.authors       = ["Albert Gazizov"]
   spec.description   = %q{Declarative ruby objects patcher}
   spec.summary       = %q{Declarative ruby objects patcher}
